@@ -2,6 +2,7 @@ package com.btl.oracle.controllers;
 
 import com.btl.oracle.entities.Course;
 import com.btl.oracle.services.CourseService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,12 +22,12 @@ public class CourseController {
     }
 
     @PostMapping
-    public Course createCourse(@RequestBody Course course) {
+    public Course createCourse(@Valid @RequestBody Course course) {
         return courseService.saveCourse(course);
     }
 
     @PutMapping("/{id}")
-    public Course updateCourse(@PathVariable Long id, @RequestBody Course courseDetails) {
+    public Course updateCourse(@PathVariable Long id,@Valid  @RequestBody Course courseDetails) {
         return courseService.updateCourse(id, courseDetails);
     }
 

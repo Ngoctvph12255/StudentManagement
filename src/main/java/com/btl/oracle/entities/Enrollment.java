@@ -2,6 +2,7 @@ package com.btl.oracle.entities;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -27,6 +28,9 @@ public class Enrollment {
     @JoinColumn(name = "course_id")
     private Course course;
 
+
+    @NotNull(message = "Enrollment date is required")
+    @Temporal(TemporalType.DATE)
     private Date enrollmentDate;
 
     // getters and setters

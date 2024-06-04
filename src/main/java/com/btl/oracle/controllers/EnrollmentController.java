@@ -2,6 +2,7 @@ package com.btl.oracle.controllers;
 
 import com.btl.oracle.entities.Enrollment;
 import com.btl.oracle.services.EnrollmentService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,12 +21,12 @@ public class EnrollmentController {
     }
 
     @PostMapping
-    public Enrollment createEnrollment(@RequestBody Enrollment enrollment) {
+    public Enrollment createEnrollment(@Valid @RequestBody Enrollment enrollment) {
         return enrollmentService.saveEnrollment(enrollment);
     }
 
     @PutMapping("/{id}")
-    public Enrollment updateEnrollment(@PathVariable Long id, @RequestBody Enrollment enrollmentDetails) {
+    public Enrollment updateEnrollment(@PathVariable Long id,@Valid  @RequestBody Enrollment enrollmentDetails) {
         return enrollmentService.updateEnrollment(id, enrollmentDetails);
     }
 

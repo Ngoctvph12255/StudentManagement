@@ -2,6 +2,7 @@ package com.btl.oracle.controllers;
 
 import com.btl.oracle.entities.Instructor;
 import com.btl.oracle.services.InstructorService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,12 +21,12 @@ public class InstructorController {
     }
 
     @PostMapping
-    public Instructor createInstructor(@RequestBody Instructor instructor) {
+    public Instructor createInstructor(@Valid @RequestBody Instructor instructor) {
         return instructorService.saveInstructor(instructor);
     }
 
     @PutMapping("/{id}")
-    public Instructor updateInstructor(@PathVariable Long id, @RequestBody Instructor instructorDetails) {
+    public Instructor updateInstructor(@PathVariable Long id,@Valid @RequestBody Instructor instructorDetails) {
         return instructorService.updateInstructor(id, instructorDetails);
     }
 
