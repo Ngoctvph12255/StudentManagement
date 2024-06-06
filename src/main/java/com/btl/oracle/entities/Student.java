@@ -7,17 +7,18 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 
 import java.util.Date;
 
 @Entity
+@Table(name = "STUDENTS")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Student {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "STUDENTS_SEQ")
+    @SequenceGenerator(allocationSize = 1, name = "STUDENTS_SEQ",sequenceName = "STUDENTS_TRG")
     private Long studentId;
 
     @NotEmpty(message = "Student name is required")

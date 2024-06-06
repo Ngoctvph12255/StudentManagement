@@ -13,7 +13,9 @@ import java.util.List;
 @RequestMapping("/instructors")
 @RequiredArgsConstructor
 public class InstructorController {
-    private final InstructorService instructorService;
+
+    @Autowired
+    private InstructorService instructorService;
 
     @GetMapping
     public List<Instructor> getAllInstructors() {

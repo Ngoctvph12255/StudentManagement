@@ -7,17 +7,18 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 
 import java.util.Date;
 
 @Entity
+@Table(name ="ENROLLMENTS")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Enrollment {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ENROLLMENTS_SEQ")
+    @SequenceGenerator(allocationSize = 1, name = "ENROLLMENTS_SEQ",sequenceName = "ENROLLMENTS_TRG")
     private Long enrollmentId;
 
     @ManyToOne

@@ -14,6 +14,7 @@ public class DepartmentService {
     private DepartmentRepository departmentRepository;
 
     public List<Department> getAllDepartments() {
+        System.out.println("/selectList");
         return departmentRepository.findAll();
     }
 

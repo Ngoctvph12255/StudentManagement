@@ -13,7 +13,9 @@ import java.util.List;
 @RequestMapping("/enrollments")
 @RequiredArgsConstructor
 public class EnrollmentController {
-    private final EnrollmentService enrollmentService;
+
+    @Autowired
+    private EnrollmentService enrollmentService;
 
     @GetMapping
     public List<Enrollment> getAllEnrollments() {

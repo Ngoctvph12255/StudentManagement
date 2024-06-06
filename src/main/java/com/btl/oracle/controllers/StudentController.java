@@ -13,7 +13,9 @@ import java.util.List;
 @RequestMapping("/students")
 @RequiredArgsConstructor
 public class StudentController {
-    private final StudentService studentService;
+
+    @Autowired
+    private StudentService studentService;
 
     @GetMapping
     public List<Student> getAllStudents() {

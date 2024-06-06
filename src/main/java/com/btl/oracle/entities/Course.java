@@ -8,15 +8,16 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 
 @Entity
+@Table(name = "COURSES")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Course {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "COURSE_SEQ")
+    @SequenceGenerator(allocationSize = 1, name = "COURSE_SEQ",sequenceName = "COURSES_TRG2")
     private Long courseId;
 
     @NotEmpty(message = "Course name is required")

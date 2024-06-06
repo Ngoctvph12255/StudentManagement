@@ -13,7 +13,8 @@ import java.util.List;
 @RequestMapping("/courses")
 @RequiredArgsConstructor
 public class CourseController {
-    private final CourseService courseService;
+    @Autowired
+    private CourseService courseService;
 
 
     @GetMapping
