@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
 
 import java.util.Date;
 
@@ -31,8 +32,8 @@ public class Student {
     private Date birthDate;
 
     @NotNull(message = "Gender is required")
-    @Pattern(regexp = "^[MF]$", message = "Gender must be 'M' or 'F'")
-    private char gender;
+    @Pattern(regexp = "^$|F|M", message = "Gender must be 'M' or 'F'")
+    private String gender;
 
     @ManyToOne
     @JoinColumn(name = "department_id")

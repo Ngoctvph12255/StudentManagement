@@ -13,11 +13,10 @@ import lombok.NoArgsConstructor;
 @Table(name = "COURSES")
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "COURSE_SEQ")
-    @SequenceGenerator(allocationSize = 1, name = "COURSE_SEQ",sequenceName = "COURSES_TRG2")
+    @SequenceGenerator(allocationSize = 1, name = "COURSE_SEQ",sequenceName = "COURSES_TRG")
     private Long courseId;
 
     @NotEmpty(message = "Course name is required")
@@ -28,5 +27,10 @@ public class Course {
     @JoinColumn(name = "department_id")
     private Department department;
 
-    // getters and setters
+    @Builder
+    public Course(Long courseId, String courseName, Department department) {
+        this.courseId = courseId;
+        this.courseName = courseName;
+        this.department = department;
+    }
 }

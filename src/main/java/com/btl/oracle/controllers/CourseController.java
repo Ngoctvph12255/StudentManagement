@@ -1,5 +1,6 @@
 package com.btl.oracle.controllers;
 
+import com.btl.oracle.dtos.CourseDTO;
 import com.btl.oracle.entities.Course;
 import com.btl.oracle.services.CourseService;
 import jakarta.validation.Valid;
@@ -23,12 +24,12 @@ public class CourseController {
     }
 
     @PostMapping
-    public Course createCourse(@Valid @RequestBody Course course) {
+    public Course createCourse(@Valid @RequestBody CourseDTO course) {
         return courseService.saveCourse(course);
     }
 
     @PutMapping("/{id}")
-    public Course updateCourse(@PathVariable Long id,@Valid  @RequestBody Course courseDetails) {
+    public Course updateCourse(@PathVariable Long id,@Valid  @RequestBody CourseDTO courseDetails) {
         return courseService.updateCourse(id, courseDetails);
     }
 

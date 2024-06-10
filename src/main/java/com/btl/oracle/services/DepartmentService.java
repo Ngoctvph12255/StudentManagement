@@ -3,9 +3,11 @@ package com.btl.oracle.services;
 import com.btl.oracle.entities.*;
 import com.btl.oracle.exception.ResourceNotFoundException;
 import com.btl.oracle.repositories.*;
+import jakarta.validation.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 @Service
@@ -14,7 +16,6 @@ public class DepartmentService {
     private DepartmentRepository departmentRepository;
 
     public List<Department> getAllDepartments() {
-        System.out.println("/selectList");
         return departmentRepository.findAll();
     }
 
@@ -30,7 +31,12 @@ public class DepartmentService {
 
     public void deleteDepartment(Long id) {
         Department department = departmentRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Department not found"));
-        departmentRepository.delete(department);
+
+        try {
+            departmentRepository.delete(department);
+        } catch (Exception e){
+            throw new ResourceNotFoundException(e.getMessage());
+        }
     }
 }
 

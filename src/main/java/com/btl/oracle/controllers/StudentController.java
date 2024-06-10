@@ -1,5 +1,6 @@
 package com.btl.oracle.controllers;
 
+import com.btl.oracle.dtos.StudentDTO;
 import com.btl.oracle.entities.Student;
 import com.btl.oracle.services.StudentService;
 import jakarta.validation.Valid;
@@ -18,17 +19,17 @@ public class StudentController {
     private StudentService studentService;
 
     @GetMapping
-    public List<Student> getAllStudents() {
+    public List<StudentDTO> getAllStudents() {
         return studentService.getAllStudents();
     }
 
     @PostMapping
-    public Student createStudent(@Valid @RequestBody Student student) {
+    public Student createStudent(@Valid @RequestBody StudentDTO student) {
         return studentService.saveStudent(student);
     }
 
     @PutMapping("/{id}")
-    public Student updateStudent(@PathVariable Long id,@Valid @RequestBody Student studentDetails) {
+    public Student updateStudent(@PathVariable Long id,@Valid @RequestBody StudentDTO studentDetails) {
         return studentService.updateStudent(id, studentDetails);
     }
 

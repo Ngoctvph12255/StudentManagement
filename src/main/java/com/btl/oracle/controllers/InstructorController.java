@@ -1,5 +1,6 @@
 package com.btl.oracle.controllers;
 
+import com.btl.oracle.dtos.InstructorDTO;
 import com.btl.oracle.entities.Instructor;
 import com.btl.oracle.services.InstructorService;
 import jakarta.validation.Valid;
@@ -18,12 +19,12 @@ public class InstructorController {
     private InstructorService instructorService;
 
     @GetMapping
-    public List<Instructor> getAllInstructors() {
+    public List<InstructorDTO> getAllInstructors() {
         return instructorService.getAllInstructors();
     }
 
     @PostMapping
-    public Instructor createInstructor(@Valid @RequestBody Instructor instructor) {
+    public Instructor createInstructor(@Valid @RequestBody InstructorDTO instructor) {
         return instructorService.saveInstructor(instructor);
     }
 

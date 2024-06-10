@@ -1,5 +1,6 @@
 package com.btl.oracle.controllers;
 
+import com.btl.oracle.dtos.EnrollmentDTO;
 import com.btl.oracle.entities.Enrollment;
 import com.btl.oracle.services.EnrollmentService;
 import jakarta.validation.Valid;
@@ -18,17 +19,17 @@ public class EnrollmentController {
     private EnrollmentService enrollmentService;
 
     @GetMapping
-    public List<Enrollment> getAllEnrollments() {
+    public List<EnrollmentDTO> getAllEnrollments() {
         return enrollmentService.getAllEnrollments();
     }
 
     @PostMapping
-    public Enrollment createEnrollment(@Valid @RequestBody Enrollment enrollment) {
+    public Enrollment createEnrollment(@Valid @RequestBody EnrollmentDTO enrollment) {
         return enrollmentService.saveEnrollment(enrollment);
     }
 
     @PutMapping("/{id}")
-    public Enrollment updateEnrollment(@PathVariable Long id,@Valid  @RequestBody Enrollment enrollmentDetails) {
+    public Enrollment updateEnrollment(@PathVariable Long id,@Valid  @RequestBody EnrollmentDTO enrollmentDetails) {
         return enrollmentService.updateEnrollment(id, enrollmentDetails);
     }
 
